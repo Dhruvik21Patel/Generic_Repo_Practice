@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample_Project.entities.IEntities
+{
+    public interface IAuditableEntity
+    {
+        DateTime CreatedDate { get; set; }
+
+        string CreatedBy { get; set; }
+
+        DateTime? UpdatedDate { get; set; }
+
+        string? UpdatedBy { get; set; }
+
+        DateTime? DeletedDate { get; set; }
+
+        string? DeletedBy { get; set; }
+        bool IsDeleted { get; set; }
+        bool Status { get; set; }
+
+    }
+}

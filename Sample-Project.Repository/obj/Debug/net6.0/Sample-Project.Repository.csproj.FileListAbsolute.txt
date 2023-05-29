@@ -1,0 +1,17 @@
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\Sample-Project.Repository.deps.json
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\Sample-Project.Repository.runtimeconfig.json
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\Sample-Project.Repository.dll
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\ref\Sample-Project.Repository.dll
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\Sample-Project.Repository.pdb
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\Sample-Project.entities.dll
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\bin\Debug\net6.0\Sample-Project.entities.pdb
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.csproj.AssemblyReference.cache
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.AssemblyInfoInputs.cache
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.AssemblyInfo.cs
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.csproj.CoreCompileInputs.cache
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.csproj.CopyComplete
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.dll
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\ref\Sample-Project.Repository.dll
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.pdb
+D:\Projects\InternShip Phase-2\Sample-Project.Repository\obj\Debug\net6.0\Sample-Project.Repository.genruntimeconfig.cache

@@ -1,0 +1,247 @@
+﻿@{
+    ViewData["Title"] = "Skill Page";
+}
+
+<partial name="_Header" />
+<div id="addEditSkill" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2">
+            <div class="modal-header pb-0" style="border-bottom:0 ;">
+                <p class="mb-0" style="font-size:20px ;">Add / Edit Skill </p>
+                <button type="button" style="border:0;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="skillTitle" class="mb-3 brdInput" name="" placeholder="Enter Skill Name">
+                <span id="skillTitleError" class="text-danger"></span>
+                <select class="brdInput pt-0" id="skillStatus" aria-label="Default select example">
+                    <option disabled="" value="Default">Select Status for Skill</option>
+                    <option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
+                </select>
+
+                <span id="StatusError" class="text-danger"></span>
+            </div>
+            <div class="modal-footer" style="border-top:0 ;">
+                <button type="button" class="btnCancle" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btnSubmit" id="saveSkill">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2">
+            <div class="modal-header pb-0" style="border-bottom:0 ;">
+                <p class="mb-0" style="font-size:20px ;">Confirm Delete </p>
+                <button type="button" style="border:0;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0">
+                Are you sure you want to delete this <span class="text-danger alert-Text" style="font-size:25px;"> </span> ?
+            </div>
+            <div class="modal-footer mt-3 justify-content-center" style="border-top:0 ;">
+                <button type="button" class="btnCancle" data-bs-dismiss="modal">
+                    Cancle
+                </button>
+                <button type="button" id="userdeletebtn" class="btnDelete" data-bs-dismiss="modal">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Container Main start-->
+<div class="height-100 bg-light">
+    <div class="tab-content p-3" style="background: white;">
+        <div class="tab-pane active" id="user" role="tabpanel">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active1 gray ps-0 pe-5 fs-4" style="color: #000000;">Skill</a>
+                </li>
+            </ul>
+            <div class="d-flex justify-content-between px-4 my-4">
+                <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                    <div class="input-group">
+                        <span class="input-group-text" style="background-color:transparent; border:none;">
+                            <img src="/Assets/search.png" sstyle="height:15px">
+                        </span>
+                        <input type="text" placeholder="search" class="form-control" id="searchSkillByAdmin" style="border:none;border-radius:5px;background-color:transparent;">
+                    </div>
+                </div>
+                @Html.DropDownList("Sort By", new SelectList(new[] {
+                new { Value = "Name Asc", Text = "Name Asc" },
+                new { Value = "Name Desc", Text = "Name Desc" },
+                new { Value = "Date Asc", Text = "Date Asc" },
+                new { Value = "Date Desc", Text = "Date Desc" }
+                }, "Value", "Text"),"Sort By", new {@id="missionSortBy" , @class = "form-select adminMissiontype", @placeholder="Sort By..." , style="width:15vw;" })
+                <a class="user-add-btn text-nowrap" data-bs-toggle="modal" data-bs-target="#addEditSkill" style="text-decoration: none; padding-top: 7px;">
+                    <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                    Add
+                </a>
+            </div>
+
+            <div class="tab-content">
+                <div id="admin-skill-content">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Container Main end-->
+</div>
+
+
+
+<script>
+ //function loadSkillData(page) {
+ //           if (!page) {
+ //               page = 1;
+ //           }
+ //           var search = $('#searchSkillByAdmin').val();
+ //           $.ajax({
+ //               url: '/Admin/ListSkills',
+ //               type: 'POST',
+ //               dataType: 'html',
+ //               data: { search: search, page: page },
+ //               success: function (userdata) {
+ //                   $("#admin-skill-content").html("");
+ //                   $("#admin-skill-content").html(userdata);
+ //               },
+ //               error: function (a) {
+ //                   alert('Error MissionData List!');
+ //               }
+ //           });
+ //       }
+
+
+    function listOfSkill(page){
+        if (!page) {
+                page = 1;
+        }
+        var search = $("#searchSkillByAdmin").val();
+        var sorting = $('#missionSortBy').val();
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/ListSkills',
+            dataType: 'html',
+            data: {sorting:sorting,search:search,page:page},
+            success: function (data) {
+                $('#admin-skill-content').html("");
+                $('#admin-skill-content').html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+            $(document).ready(function () {
+                 listOfSkill();
+                $('#missionSortBy').on('change', function () {
+                    listOfSkill();
+                });
+
+                $("#searchSkillByAdmin").keyup(function() {
+                    listOfSkill();
+                });
+            //loadSkillData();
+            //$('#searchSkillByAdmin').on('keyup', function (e) {
+            //    loadSkillData();
+            //});
+            $('#addEditSkill').on('show.bs.modal', function (e) {
+
+                var skillId = $(e.relatedTarget).data('id');
+                if(skillId != undefined){
+                    var row = $("#mySkill tr").filter(function() {
+                        return $(this).find("i").data("id") == skillId;
+                    });
+                    var skillName = row.find("td:nth-child(1)").text().trim();
+                    var skillStatus = row.find("td:nth-child(2)").text().trim();
+                    $('#skillTitle').val(skillName);
+                    $('#skillStatus').val(skillStatus);
+                    $('#saveSkill').attr('data-id', skillId);
+                }
+                else{
+                    $('#skillTitle').val("");
+                    $('#skillStatus').val("Default");
+                    $('#saveSkill').attr('data-id', 0);
+                }
+            });
+            $('#popup').on('show.bs.modal', function (e) {
+                var userId = $(e.relatedTarget).data('id');
+                $('.alert-Text').text("Skill");
+                $('#userdeletebtn').attr('data-id', userId);
+            });
+        });
+
+       
+
+        $('#saveSkill').on('click', function() {
+            var skillName = $('#skillTitle').val();
+            var skillStatus = $('#skillStatus').val();
+            if(skillStatus=="Active")
+                skillStatus = true;
+            else
+                skillStatus =false;
+            var skillId = $('#saveSkill').attr('data-id');
+            var isValid = true;
+            if (skillName === '') {
+                $('#skillTitleError').text('Please enter Skill Title');
+                isValid = false;
+            } else {
+                $('#skillTitleError').text('');
+            }
+            if (skillStatus === '' || skillStatus== null) {
+                $('#StatusError').text('Please enter Skill Status');
+                isValid = false;
+            } else {
+                $('#StatusError').text('');
+            }
+            if (isValid) {
+                $.ajax({
+                    url: '/Admin/AddorUpdateSkill',
+                    type: 'Post',
+                    data: {
+                        skillName: skillName,
+                        status: skillStatus,
+                        id: skillId,
+                    },
+                    success: function(data) {
+                        listOfSkill();
+                        $('#saveSkill').attr('data-id', 0);
+                        $('#skillTitle').val('');
+                        $('#skillStatus').val('Default');
+                        $('#addEditSkill').modal('hide');
+                    },
+                    error: function(xhr, status, error) {
+                        alert(xhr.responseText);
+                    },
+                });
+            }
+        });
+
+
+
+    $('#userdeletebtn').on('click', function (e) {
+        var deleteId = $('#userdeletebtn').attr('data-id');
+        $.ajax({
+            url: '/Admin/DeleteSkill',
+            type: 'POST',
+            data: {skillId: deleteId},
+            success: function (data) {
+                listOfSkill();
+            },
+            error: function (a) {
+                alert('Error MissionData List!');
+            }
+        });
+    });
+
+        $('.close, .btnCancle').on('click', function() {
+            $('#skillTitleError').text('');
+            $('#StatusError').text('');
+        });
+</script>
+

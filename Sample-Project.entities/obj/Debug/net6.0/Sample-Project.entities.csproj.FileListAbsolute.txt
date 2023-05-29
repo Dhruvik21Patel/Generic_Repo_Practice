@@ -1,0 +1,14 @@
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.AssemblyInfoInputs.cache
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.AssemblyInfo.cs
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.csproj.CoreCompileInputs.cache
+D:\Projects\InternShip Phase-2\Sample-Project.entities\bin\Debug\net6.0\Sample-Project.entities.deps.json
+D:\Projects\InternShip Phase-2\Sample-Project.entities\bin\Debug\net6.0\Sample-Project.entities.runtimeconfig.json
+D:\Projects\InternShip Phase-2\Sample-Project.entities\bin\Debug\net6.0\Sample-Project.entities.dll
+D:\Projects\InternShip Phase-2\Sample-Project.entities\bin\Debug\net6.0\ref\Sample-Project.entities.dll
+D:\Projects\InternShip Phase-2\Sample-Project.entities\bin\Debug\net6.0\Sample-Project.entities.pdb
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.dll
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\ref\Sample-Project.entities.dll
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.pdb
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.genruntimeconfig.cache
+D:\Projects\InternShip Phase-2\Sample-Project.entities\obj\Debug\net6.0\Sample-Project.entities.csproj.AssemblyReference.cache

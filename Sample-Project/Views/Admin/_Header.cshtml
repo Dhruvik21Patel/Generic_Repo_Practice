@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accesor
+@*@Model CI_Platform.entites.Models.UserNotifications*@
+<header class="header">
+    <div class="header-left d-flex align-items-center">
+       
+    </div>
+    
+    <div class="dropdown">
+        <button class=" dropdown-toggle header-profile" type="button" data-bs-toggle="dropdown">
+            @{
+                var avatar = Accesor?.HttpContext?.Session.GetString("Avtar");
+            }
+            @if (avatar == "")
+            {
+                <img class="user-img" src="/Assets/defaultUser.png">
+            }
+            else
+            {
+                <img class="user-img" src="@avatar">
+            }
+
+            <span class="mobile-view">@Accesor?.HttpContext?.Session.GetString("Name")</span>
+            <img src="/Assets/drop-down.png" class="ic-down mobile-view">
+        </button>
+        <ul class="dropdown-menu">
+            @if (Accesor?.HttpContext?.Session.GetString("Role") == "Admin")
+            {
+                <li><a class="dropdown-item" href="@Url.Action("AdminProfilePage", "Admin")">Admin Panel</a></li>
+            }
+            <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Account">Logout</a></li>
+        </ul>
+    </div>
+</header>
+<hr style="margin:0px;" />
